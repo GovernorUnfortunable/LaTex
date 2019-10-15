@@ -1,0 +1,269 @@
+% Cualquier duda, contactarse con matias.milia@estudiante-flacso.mx
+\documentclass[a4paper,12pt]{report}
+\usepackage[spanish]{babel} 
+\usepackage[T1]{fontenc} % agrego este paquete porque, de lo que pude leer en los foros, este es para la salida de texto y no tener problemas
+\usepackage[utf8]{inputenc} % tuve que cambiar de Latin1 a utf8 porque, al parecer, el texto estaba codificado en esta norma y el archivo no compilaba. Al parecer, la diferencia entre UTF8 y Latin1 es el largo de los caracteres porque en utf8 ocupan más bytes que en Latin1. 
+\usepackage{adjustbox} % permite ajustar las tablas a la página o proporciones de la misma
+\usepackage[hidelinks]{hyperref} %ESCONDE URLs al poner los links
+\usepackage{vmargin}
+\usepackage{colortbl} % TABLAS CON COLOR
+\usepackage{arydshln} % TABLAS
+\usepackage{array, multirow, makecell, hhline}
+\usepackage{ltablex} % TableX para la proporción en multirow
+\usepackage{ragged2e} % IDEM
+\usepackage{geometry} % IDEM
+\usepackage[inline]{enumitem} % IDEM
+\usepackage[version=3]{mhchem} % este paquete es para poder escribir los compuestos químicos 
+\usepackage{dblfloatfix} % para que flote la tabladesafío
+\usepackage{multirow} % lo pide https://www.latex-tables.com/#
+\usepackage{colortbl} % color para las casillas de las tablas de https://www.latex-tables.com/#
+\usepackage{rotating} %rota  https://www.latex-tables.com/#
+\usepackage{lipsum} % para que se pueda hacer un salto de página
+\usepackage{pdfpages} % este paquete permite insertar páginas PDF en el archivo
+\usepackage{enumitem} % sirve para utilizar números romanos, en las enumeraciones "\begin{enumerate}[label=\roman*.]" también hay otros
+\usepackage{apacite}
+\usepackage{graphicx} % gráficosa
+\usepackage{subfigure} % subfiguras
+\usepackage{epstopdf} % Insertar PDF como imagenes
+\usepackage{booktabs}
+\usepackage{float} % para hacer 'flotar' las tablas
+\usepackage[flushleft]{threeparttable} % para las notas en las tablas
+\usepackage{footnote}
+\usepackage{lscape} % para poder hacer que la página vaya horizontal
+\usepackage{xcolor} % para modificar color
+\usepackage{longtable} % permite tablas de más de una página
+\usepackage{titletoc}% %%%%% TITLETOC es para poner "Capítulo" adelante del número de capítulo
+\titlecontents{chapter}% <section-type>
+  [0pt]% <left>
+  {\bfseries}% <above-code>
+  {\chaptername\ \thecontentslabel:\quad}% <numbered-entry-format>
+  {}% <numberless-entry-format>
+  {\hfill\contentspage}% <filler-page-format>
+	\usepackage{lipsum}
+	\usepackage{setspace}
+  %%%%
+\usepackage[sort&compress]{natbib}
+\usepackage{savesym} % sirve para agregar los símbolos ? y ?
+\savesymbol{approx} % sirve para agregar los símbolos ? y ?
+\usepackage{MnSymbol} % sirve para agregar los símbolos ? y ?
+\usepackage{makeidx} % Para el índice analítico 
+%\usepackage{fancyhdr} % Encabezados y pies de página. Más info acá: http://minisconlatex.blogspot.com/2013/01/como-editar-los-encabezados-y-pies-de.html y acá: https://ondahostil.wordpress.com/2017/05/22/lo-que-he-aprendido-encabezados-y-pies-de-pagina-en-latex/
+\restoresymbol{approx}{amssymb}
+\renewcommand{\thefootnote}{\arabic{footnote}} % 1, 2, 3... para las notas al pie
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}                           % espacio entre el texto y el pie de página
+\renewcommand{\baselinestretch}{1,5} %interlineado
+\usepackage{pgfplots} % BOXPLOT Este es para hacer 'gráficos de caja y bigote', 'boxplots' o 'box and whisker chart' 
+\usepgfplotslibrary{colormaps} % COLORES BOXPLOT
+\pgfplotsset{compat=1.9} % BOXPLOT
+\usepgfplotslibrary{statistics} % BOXPLOT
+\usetikzlibrary{pgfplots.colormaps}
+\pgfplotsset{compat=1.14}  % BOXPLOT WIdTH
+\usetikzlibrary{backgrounds}  % BOXPLOT WIDTH
+\usepackage{blindtext}  % BOXPLOT WIDTH
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 						TITULO 																		%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+   \def\@currentlabel{#2}%
+   \label{#1}\endgroup
+}
+\makeatother
+\begin{document}
+\pagenumbering{gobble} % para que no ponga número de página 
+
+\begin{titlepage}
+   \begin{center}
+       \vspace*{0.2cm}
+        \includegraphics[width=0.2\textwidth]{LogoFlacso.png} \\ % LOGO DE FLACSO ACTUALIZADO A 2019
+       \vspace*{0.2cm}
+	\textsc{Facultad Latinoamericana de Ciencias Sociales} \\
+	\textsc{sede académica México} \\
+	Maestría en... \\. %% PROGRAMA ACADÉMICO
+	?? Promoción\\ % PROMOCIÓN o Cohorte
+	2019 -- 2020 \\ % AÑOS
+       \vspace{0.3cm}	
+       \textbf{\large{Titulo.}  \\ \normalsize \textsl{Subtítulo.} \\}
+        \vspace{0.3cm}
+        Tesis para obtener el grado de Doctor en Ciencias Sociales\\
+        \vspace{0.3cm}
+        Presenta: \\
+        \textbf{Autor}\\
+        \vspace{0.2cm}
+	\normalsize {Directores de tesis:} \\
+	\normalsize {\textsf{Dra. 1}},
+	\normalsize {\textsf{Dr. Dr. 2}}.
+	\\
+	\normalsize {Lectores de tesis:} \\
+	\normalsize {\textsf{Dr. 1},}
+	\normalsize {\textsf{Dra. 2}.}
+       \vspace{0.4cm}\\
+Seminario de Investigación: \\ % Completar nombre del seminario 
+Línea de Investigación:  \\ % completar nombre de la línea
+       \vspace{0.5cm}
+Ciudad de México,  \\ % Fecha
+       \vspace{0.5cm}
+\footnotesize{Este Doctorado fue realizado gracias a una beca otorgada por \\
+el Consejo Nacional de Ciencia y Tecnología (\textsc{conacyt})}\\
+       \vfill
+ 
+   \end{center}
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 						ÍNDICES 																		%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\pagebreak
+\cleardoublepage
+\listoffigures % indice de figuras
+
+\cleardoublepage
+\listoftables
+
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 						DEDICATORIA																	%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{plain}
+\begin{flushright}
+       \vspace*{3.5cm}
+\large
+\textsl{A los chinos, por la tinta.}
+       \vspace*{0.4cm}   
+       \end{flushright}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 						AGRADECIMIENTOS 																		%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Agradecimientos} % si no queremos que añada la palabra "Capitulo"
+\phantomsection
+\addcontentsline{toc}{chapter}{Agradecimientos}
+
+A mis directores, ... 
+
+A mis lectores, ... 
+
+A mi seminario y sus coordinadores, ... 
+
+A mis entrevistados...
+
+A los profesores que apoyaron... 
+
+
+    \textsl{De corazón, ¡muchas, muchas gracias!}
+
+
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 						ABSTRACT ESPAÑOL															%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{plain}
+\begin{center}
+    \Large
+    \textbf{TITULO.}\\
+    \vspace{0.4cm}
+    \large
+SUBTITULO  \\
+ \vspace{0.8cm}
+
+    \textbf{Resumen} \\
+ \normalsize
+ \vspace{0.3cm}
+ \begin{justify}
+
+RESUMEN
+ %Máximo 200 palabras
+ \end{justify}
+ \vspace{0.6cm}
+   
+\textsl{Palabras clave:} \textsc{ }\\
+    %Máximo 10 palabras clave
+    \cleardoublepage
+	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 						ABSTRACT EN INGLÉS															%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\large
+ \vspace{0.8cm}
+    \textbf{Abstract} \\
+     \normalsize
+ \vspace{0.3cm}
+  \begin{justify}
+  
+  
+  \end{justify}
+    \textsl{Keywords:}    \textsc{}
+
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMIENZA LA TESIS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Introducción. \\{\huge subtítulo introducción.}}
+% La introducción no sale numerada y tiene un subtítulo después de \huge 
+\phantomsection
+\addcontentsline{toc}{chapter}{Introducción.} % Entre estas llaves va lo que quiero que salga en el índice 
+\pagenumbering{roman} %%%% Esta línea está haciendo que todas las páginas estén numeradas con números romanos
+
+\section*{Sección 1 Introducción } 
+\phantomsection
+\addcontentsline{toc}{section}{Sección 1 Introducción} % Entre estas llaves va lo que quiero que salga en el índice 
+. 
+
+\section*{Sección 2 Introducción}
+\phantomsection
+\addcontentsline{toc}{section}{Sección 2 Introducción} % Entre estas llaves va lo que quiero que salga en el índice 
+
+
+\clearpage % salto de página
+\pagenumbering{arabic} % cambia a la numeración a ARÁBICA 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 						Capítulo 1															%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Marco Teórico.}\label{Cap1} % Label permite hacer un enlace en el texto al capítulo usando \ref{Cap1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 						Capítulo 2															%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Resultados.}\label{Cap2}% Label permite hacer un enlace en el texto al capítulo usando \ref{Cap2}
+
+
+\cleardoublepage
+
+\chapter*{Conclusiones} % este es el título que aparece antes de que se den las citas bibliográficas
+\phantomsection
+\addcontentsline{toc}{chapter}{Conclusiones} % este es el título que aparece en el índice
+
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliografía} % este es el título que aparece en el índice
+\renewcommand{\bibname}{Bibliografía} % este es el título que aparece antes de que se den las citas bibliográficas
+\bibliographystyle{apacite} % Tipo de citación que deseo que el programa haga
+\bibliography{DCS_Tesis} % Aquí va el archivo .bib donde está toda la bibliotrafía
+\end{document}
